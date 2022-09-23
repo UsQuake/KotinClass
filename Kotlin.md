@@ -2,7 +2,7 @@
 ## Java랑 다른 점
 ### 변수
   * 모든 변수는 객체다
-    - 기본적인 primitive 타입도 클래스로 취급한다!
+    - 기본적인 primitive 타입(Int, Long, Short, Double, Float, Boolean, Byte)도 클래스로 취급한다!
     
   * Mutable 지원
     - var -> 변수 val -> 상수
@@ -69,12 +69,17 @@
         
      - **Set**
 
-        + Map과 같이 내부적으로 RedBlackTree를 이용하는 듯하다
+        + Map과 같이 내부적으로 RedBlackTree를 이용하는지 Iterable하다.. Index(?)도 있다
           ``` kotlin
           fun main()
           {
-           var data1: Int = 10 //Null 대입 불가
-           var data2: Int? = null //Null 대입 가능
+           var set = mutableSetOf(5,4,3,2,1)
+           //set = {0,1,2,3,4,5}
+           assert(set.size == 5)
+           for((index, value) in set.withIndex())
+           {
+             assert((5 - index) == value)
+           }
           }
           ``` 
         
