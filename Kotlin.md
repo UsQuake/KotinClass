@@ -13,9 +13,56 @@
     - by lazy {} 꼴로 lazy초기화하는 클래스를 정의 가능
     
 ### 모던한 타입/컬렉션 지원(Pair, Range, Null-Safe-Type ..etc)
-  
+
+   * **기본 컬렉션**
+      - 기본적으로 ***Immutable*** 타입이다
+      
+      - mutable***컬렉션 종류*** 타입으로 명시해야만 ***Mutable***하게 쓸 수 있다
+      
+      - ***컬렉션 종류***Of()(내용물1, 내용물2,...etc)꼴로 한번에 자료형을 정의할 수 있다
+      
+      - **List**
+      
+        + 리스트 내용물이랑 인덱스를 같이 뽑아낼 수 있다
+          ``` kotlin
+          fun main()
+          {
+           var list = listOf(10,20,30)
+           for((index, value) in list.withIndex())
+           {
+            assert((index + 1) * 10 == value)
+            /*assert((0 + 1) * 10 == 10) */
+            /*assert((1 + 1) * 10 == 20) */
+            /* .......etc........ */
+           }
+          }
+          ``` 
+     - **Map** 
+     
+       + Pair타입이나 "key" to "value" 형태로 자료를 넣을 수 있다
+         ```kotlin
+         fun main()
+         {
+          var map = mapOf<String, String>(Pair("one", "hello"), "two" to "world")
+          assert(map.get("one").equals("hello"))
+          assert(map.get("two").equals("world"))
+          assert(map.size == 2)
+         }
+         ```
+        
+     - **Set**
+
+        + Map과 같이 내부적으로 RedBlackTree를 이용하는 듯하다
+          ``` kotlin
+          fun main()
+          {
+           var data1: Int = 10 //Null 대입 불가
+           var data2: Int? = null //Null 대입 가능
+          }
+          ``` 
+        
   * **Pair**
-    - (변수 A, 변수 B...)같은 데이터 클래스 형으로 Pair 지원
+    - (변수 A, 변수 B...)꼴로 치환 가능한 데이터 클래스
       ```kotlin
       fun main()
       {
@@ -28,7 +75,6 @@
       }
       ```
     - Map 컬렉션에서 사용 가능
-    - "key" to "value" 형태로 사용 가능하다
     
   * **Range**(Rust랑 거의 비슷함)
     - A~B까지 -> A..B꼴로 for문에서 유용하게 사용 가능
