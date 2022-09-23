@@ -1,4 +1,5 @@
-## 코틀린 문법
+# 코틀린 문법
+## Java랑 다른 점
 ### 변수
   * 모든 변수는 객체다
     - 기본적인 primitive 타입도 클래스로 취급한다!
@@ -11,9 +12,8 @@
     - primitive 타입에는 적용이 불가능 하다
     - by lazy {} 꼴로 lazy초기화하는 클래스를 정의 가능
     
-### 기본 타입/컬렉션 지원(Pair, Range, List..etc)
+### 모던한 타입/컬렉션 지원(Pair, Range, Null-Safe-Type ..etc)
   
-
   * **Pair**
     - (변수 A, 변수 B...)같은 데이터 클래스 형으로 Pair 지원
       ```kotlin
@@ -27,7 +27,7 @@
        assert(b.equals(3))
       }
       ```
-    - HashMap, TreeMap에서 사용 가능
+    - Map 컬렉션에서 사용 가능
     - "key" to "value" 형태로 사용 가능하다
     
   * **Range**(Rust랑 거의 비슷함)
@@ -101,6 +101,7 @@
          }
       ```
     - 주 생성자 생략 + 보조 생성자(constructor()) 사용 
+     (보조 생성자 같은 걸 왜 만들었냐고 묻지 말자..자바가 원래 오버로딩 안 되서 그렇다..ㅠ)
       ```kotlin
          class User{
           var name: String
@@ -110,9 +111,7 @@
           }
          }
       ```
-    - 주 생성자 + 보조 생성자(constructor()) 연쇄 호출 적용
-      (자바,코틀린은 기본적으로 오버로딩이 없어서 유용하다) 
-      (단, 초기화가 아니라 Re-Assign이 되므로 var타입으로 정의해서 초기값을 넣어야 한다)
+    - 주 생성자 + 보조 생성자(constructor()) 연쇄 호출 적용 
       ```kotlin
        class User(name: String){
        
@@ -132,7 +131,7 @@
        }
       ```
   * 상속 
-    - 변수 혹은 값(상수) 앞에 open 키워드로 상속될 동작(함수)을 표현
+    - 상속할 함수/변수/상수 앞에 open 키워드로 상속 표현
       ```kotlin
       open class Vehicle(open var name: String){
        open val maxPassengerCount: Int = 0 
@@ -146,7 +145,7 @@
        assert(IncheonBusanLine.maxPassengerCount == 20)
       }
       ```
-    - 상속 받는 함수는 override 키워드 사용
+    - 상속 받는 함수/변수/상수는 override 키워드 사용
     - 상속 받은 함수에 대해 오버로딩 X 무조건 가상함수로 작성(언어 레벨에섬 막힘)
     
   * 접근 제한자: 
