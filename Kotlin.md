@@ -95,8 +95,8 @@
       }
       fun main()
       {
-       var IncheonBusan: Vehicle = Plane("747") //Java 베이스이므로, 다형성이 기본임
-       assert(IncheonBusan.maxPassengerCount == 20)
+       var IncheonBusanLine: Vehicle = Plane("747") //Java 베이스이므로, 다형성이 기본임
+       assert(IncheonBusanLine.maxPassengerCount == 20)
       }
       ```
     - 상속 받는 함수는 override 키워드 사용
