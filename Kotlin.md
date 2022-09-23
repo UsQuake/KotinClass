@@ -37,6 +37,32 @@
     - 아아
   
 ### OOP
+  * 생성자
+    - 주 생성자 + 멤버 선언 동시에
+      '''kotlin
+         class User(var name: String){
+         }
+      '''
+    - 주 생성자 -> init 블럭에서 초기화
+      '''kotlin
+         class User(_name: String){
+          var name: String
+          init
+          {
+           this.name = _name
+          }
+         }
+      '''
+    - 주 생성자 생략 + 보조 생성자(constructor()) 사용 
+      '''kotlin
+         class User{
+          var name: String
+          constructor(_name: String)
+          {
+           this.name = _name
+          }
+         }
+      '''
   * 상속 
     - 변수 혹은 값(상수) 앞에 open 키워드로 상속될 동작(함수)을 표현
     - 상속 받는 함수는 override 키워드 사용
