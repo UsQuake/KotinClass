@@ -16,7 +16,7 @@
 
   * **Pair**
     - (변수 A, 변수 B...)같은 데이터 클래스 형으로 Pair 지원
-    ```kotlin
+      ```kotlin
       fun main()
       {
        var A = Pair("sss",3)
@@ -26,22 +26,49 @@
        assert(a.equals("sss"))
        assert(b.equals(3))
       }
-    ```
+      ```
     - HashMap, TreeMap에서 사용 가능
     - "key" to "value" 형태로 사용 가능하다
     
   * **Range**(Rust랑 거의 비슷함)
-    - to..from 꼴로 사용 가능
-    - in "구간" 꼴로 범위 안에 있는지 확인 가능 ex.) assert(6 == in 0..9) 
+    - A~B까지 -> A..B꼴로 for문에서 유용하게 사용 가능
+     ```kotlin
+     fun main(){
+       val arr = arrayOf(0,1,2,3,4)
+       /* arr = {0,1,2,3,4} */
+       for(i in 0..4)
+       {
+        assert(arr[i] == i)
+        /*assert(arr[0] == 0)*/
+        /*assert(arr[1] == 1)*/
+        /*assert(arr[2] == 2)*/
+        /* .....etc.........*/
+       }
+     }
+     ```
+    - 변수/상수 in "구간" 꼴로 범위 안에 있는지 확인 가능 
+      ```kotlin
+      fun main(){ 
+         assert(6 in 0..9)
+      }
+      ```
       
   * **Any**
-    - 모든 클래스가 상속 받는 클래스
-    - 말 그대로 모든 타입을 대변한다
+    - 모든 타입(클래스)의 어머니격인 타입(클래스)
+    - when문에서 타입을 유연하게 쓰도록 활용 가능
       
   * **Unit**
-    - void 형과 비슷하다
-    - 함수형 프로그래밍할 떄 void 생기면 곤란한 상황을 대처한다
-      
+    - c언어의 void 형과 비슷하다
+    - 함수형 프로그래밍할 때 void 생기면 곤란한 상황을 대처한다
+      ```kotlin
+      fun some(): Unit{
+       println(10 + 20)
+      }
+      fun main()
+      {
+       assert(some() == Unit)
+      }
+      ```  
   * **Null**
     - 아아
   
@@ -117,11 +144,11 @@
     - protected : 사용 불가
     - private : 파일 내부에서 이용 가능
 
-  * Data 전용 객체
+  * Data Class
     - equals()비교시 객체의 참조 그 자체(주소값)이 아니라 데이터를 비교한다!
     
   * 컴파일러 자동 생성 멤버 함수
-    - equals() : 즉시 초기화된 내부데이터 객체를 비교한다(lateinit 변수는 비교하지 않는다)!
-    - toString() : 즉시 초기화된 내부데이터 객체를 String으로 포매팅한다(lateinit 변수는 비교하지 않는다)!
+    - equals() : 즉시 초기화된 내부 데이터 객체 를 비교한다(lateinit 변수는 비교하지 않는다)!
+    - toString() : 즉시 초기화된 내부 데이터 객체를 String으로 포매팅한다(lateinit 변수는 비교하지 않는다)!
       
 
