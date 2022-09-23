@@ -82,7 +82,7 @@
         : this(name, count) {
         this.email = email
         }
-   }
+       }
       ```
   * 상속 
     - 변수 혹은 값(상수) 앞에 open 키워드로 상속될 동작(함수)을 표현
