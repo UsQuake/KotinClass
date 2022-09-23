@@ -11,16 +11,25 @@
     - primitive 타입에는 적용이 불가능 하다
     - by lazy {} 꼴로 lazy초기화하는 클래스를 정의 가능
     
-### 기본 타입 지원(Tuple, Pair, Range)
+### 기본 타입/컬렉션 지원(Pair, Range, List..etc)
   
-  * **Tuple** 
-    - (변수 A, 변수 B...)
-      
+
   * **Pair**
-    - (변수 A, 변수 B...)같은 클래스 형으로 Pair 지원
+    - (변수 A, 변수 B...)같은 데이터 클래스 형으로 Pair 지원
+    ```kotlin
+      fun main()
+      {
+       var A = Pair("sss",3)
+       assert(A == Pair("sss",3))
+       
+       var (a,b) = Pair("sss",3)
+       assert(a.equals("sss"))
+       assert(b.equals(3))
+      }
+    ```
     - HashMap, TreeMap에서 사용 가능
     - "key" to "value" 형태로 사용 가능하다
-      
+    
   * **Range**(Rust랑 거의 비슷함)
     - to..from 꼴로 사용 가능
     - in "구간" 꼴로 범위 안에 있는지 확인 가능 ex.) assert(6 == in 0..9) 
