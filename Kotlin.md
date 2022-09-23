@@ -80,9 +80,37 @@
       }
       ```  
   * **Null-Safty Type**
-    - ?연산자를 지원한다!
-    - 
-  
+    - **?연산자**
+      + Null을 사용할지 말지 명시적으로 표현하는 방식이다
+        ``` kotlin
+        fun main()
+        {
+         var data1: Int = 10 //Null 대입 불가
+         var data2: Int? = null //Null 대입 가능
+        }
+        ``` 
+    - **Nothing** 
+    
+      + Unit과는 차이가 있다 보통 예외 처리에 쓴다고 한다.
+        ```kotlin
+        fun some(): Nothing{
+         throw Exception()
+        }
+        fun main()
+        {
+         some() //예외 발생!
+        }
+        ```
+      + 이것도 ? 연산 사용가능하다! 
+        ```kotlin
+        fun some(): Nothing?{
+         return null
+        }
+        fun main()
+        {
+         assert(some() == null)
+        }
+        ```
 ### OOP
   * 생성자
     - 주 생성자 + 멤버 선언 동시에
