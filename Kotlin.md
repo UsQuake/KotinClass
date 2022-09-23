@@ -39,12 +39,12 @@
 ### OOP
   * 생성자
     - 주 생성자 + 멤버 선언 동시에
-      '''kotlin
+      ```kotlin
          class User(var name: String){
          }
-      '''
+      ```
     - 주 생성자 -> init 블럭에서 초기화
-      '''kotlin
+      ```kotlin
          class User(_name: String){
           var name: String
           init
@@ -52,9 +52,9 @@
            this.name = _name
           }
          }
-      '''
+      ```
     - 주 생성자 생략 + 보조 생성자(constructor()) 사용 
-      '''kotlin
+      ```kotlin
          class User{
           var name: String
           constructor(_name: String)
@@ -62,9 +62,43 @@
            this.name = _name
           }
          }
-      '''
+      ```
+    - 주 생성자 + 보조 생성자(constructor()) 연쇄 호출 적용
+      (자바,코틀린은 기본적으로 오버로딩이 없어서 유용하다) 
+      (단, 초기화가 아니라 Re-Assign이 되므로 var타입으로 정의해서 초기값을 넣어야 한다)
+      ```kotlin
+       class User(name: String){
+       
+        var count: Int = 0 //Initialize가 아니라 Re-Assign이므로 무조건 variable타입
+        val name: String = name
+        var email: String = "aaaa@gmail.com" //Initialize가 아니라 Re-Assign이므로 무조건 variable타입
+        
+        constructor(name: String, count: Int)
+        : this(name) {
+         this.count = count
+        }
+        
+        constructor(name:String, count: Int, email: String)
+        : this(name, count) {
+        this.email = email
+        }
+   }
+      ```
   * 상속 
     - 변수 혹은 값(상수) 앞에 open 키워드로 상속될 동작(함수)을 표현
+      ```kotlin
+      open class Vehicle(open var name: String){
+       open val maxPassengerCount: Int = 0 
+      }
+      class Plane(override var name: String) : Vehicle(name){
+       override val maxPassengerCount: Int = 20
+      }
+      fun main()
+      {
+       var IncheonBusan: Vehicle = Plane("747") //Java 베이스이므로, 다형성이 기본임
+       assert(IncheonBusan.maxPassengerCount == 20)
+      }
+      ```
     - 상속 받는 함수는 override 키워드 사용
     - 상속 받은 함수에 대해 오버로딩 X 무조건 가상함수로 작성(언어 레벨에섬 막힘)
     
