@@ -55,7 +55,7 @@
           }
           ``` 
      - **Map** 
-     
+       + 순서도 있고, Iterable 하다
        + Pair타입이나 "key" to "value" 형태로 자료를 넣을 수 있다
          ```kotlin
          fun main()
@@ -69,7 +69,7 @@
         
      - **Set**
 
-        + Map과 같이 내부적으로 RedBlackTree를 이용하는지 Iterable하다.. Index(?)도 있다
+        + 순서도 있고, Iterable 하다
           ``` kotlin
           fun main()
           {
