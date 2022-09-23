@@ -9,8 +9,25 @@
     
   * 늦은 초기화(lazy init) 지원
     - lateinit 키워드 붙이기
-    - primitive 타입에는 적용이 불가능 하다
+      ``` kotlin
+      fun main()
+      {
+        lateinit var : String //뒤늦게 대입하므로 var타입
+      }
+      ```
+    - primitive 타입(Int, Long, Short, Double, Float, Boolean, Byte)에는 적용이 불가능 하다
     - by lazy {} 꼴로 lazy초기화하는 클래스를 정의 가능
+      ``` kotlin
+      val lazyData: Int by lazy{
+         println("in lazy....")
+         10
+      }
+      fun main()
+      {
+        println("in main....")
+        assert(lazyData + 10 == 20)
+      }
+      ```
     
 ### 모던한 타입/컬렉션 지원(Pair, Range, Null-Safe-Type ..etc)
 
