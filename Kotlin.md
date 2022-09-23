@@ -32,8 +32,8 @@
     
   * **Range**(Rust랑 거의 비슷함)
     - A~B까지 -> A..B꼴로 for문에서 유용하게 사용 가능
-     ```kotlin
-     fun main(){
+      ```kotlin
+      fun main(){
        val arr = arrayOf(0,1,2,3,4)
        /* arr = {0,1,2,3,4} */
        for(i in 0..4)
@@ -44,8 +44,8 @@
         /*assert(arr[2] == 2)*/
         /* .....etc.........*/
        }
-     }
-     ```
+      }
+      ```
     - 변수/상수 in "구간" 꼴로 범위 안에 있는지 확인 가능 
       ```kotlin
       fun main(){ 
@@ -56,7 +56,17 @@
   * **Any**
     - 모든 타입(클래스)의 어머니격인 타입(클래스)
     - when문에서 타입을 유연하게 쓰도록 활용 가능
-      
+      ```kotlin
+      fun main(){
+         var data: Any = 10
+         when(data){
+          is String ->println("data is String Type!")
+          20, 30 ->println("data is 20 or 30")
+          in 1..10 ->println("data is in 1..10!")
+          else ->println("data is Not Valid Type!")
+         }
+      }
+      ```
   * **Unit**
     - c언어의 void 형과 비슷하다
     - 함수형 프로그래밍할 때 void 생기면 곤란한 상황을 대처한다
@@ -69,8 +79,9 @@
        assert(some() == Unit)
       }
       ```  
-  * **Null**
-    - 아아
+  * **Null-Safty Type**
+    - ?연산자를 지원한다!
+    - 
   
 ### OOP
   * 생성자
