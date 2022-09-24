@@ -272,6 +272,8 @@
   * 상속 
   
     - 상속할 함수/변수/상수 앞에 open 키워드로 상속 표현
+    - 상속 받는 함수/변수/상수는 override 키워드 사용
+    - 상속 받은 함수에 대해 오버로딩 X 무조건 가상함수로 작성(언어 레벨에섬 막힘)
     
       ```kotlin
       open class Vehicle(open var name: String){
@@ -287,12 +289,11 @@
       }
       ```
       
-    - 상속 받는 함수/변수/상수는 override 키워드 사용
-    
-    - 상속 받은 함수에 대해 오버로딩 X 무조건 가상함수로 작성(언어 레벨에섬 막힘)
+
     
     
   * 접근 제한자: 
+  
     - public : 모든 파일(기본적으로 getter setter를 만드는 public이 기본 타입이다)
     - internal : 같은 파일
     - protected : 사용 불가
@@ -405,17 +406,20 @@
       ```  
       
   * Companion Object Class
-    - 클래스 내부에 단일 오브젝트를 만들어준다.
+  
+    - 클래스 내부에 object class를 만들어준다.
     
       ```kotlin
-      val obj = object{
-       var data = 10
-       fun some() {
-        println("data : $data")
+      class MyClass {
+       companion object {
+        var data = 10
+        fun some() {
+         println("data : $data")
+        }
        }
       }
       fun main() {
-           obj.data = 20 //오류
-           obj.some() //오류
+           MyClass.data = 20
+           MyClass.some()
       }
       ``` 
