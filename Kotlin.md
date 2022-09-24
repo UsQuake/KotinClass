@@ -321,7 +321,7 @@
       
   * Data Class
   
-    - equals()비교시 객체의 참조 그 자체(주소값)이 아니라 데이터를 비교한다!
+    - equals()비교시 객체Id가 아니라 멤버 내용물을 비교한다!
     
       ```kotlin
       data class DataClass(val name: String, val email: String, val age: Int)
@@ -368,5 +368,54 @@
       ```
       
   * Object Class
+  
     - 임시 클래스로 전역으로 사용 가능한 단일 오브젝트를 만들어준다.
     
+      ```kotlin
+      val obj = object{
+       var data = 10
+       fun some() {
+        println("data : $data")
+       }
+      }
+      fun main() {
+           obj.data = 20 //오류
+           obj.some() //오류
+      }
+      ```    
+    - 상속도 가능하다.
+    
+      ```kotlin
+      open class Super{
+       open var data = 10
+       open fun some() {
+        println("i am super some() : $data")
+       }
+      }
+      val obj = object: Super(){
+       override var data = 20
+       override fun some() {
+        println("i am object some() : $data")
+       }
+      }
+      fun main() {
+           obj.data = 30
+           obj.some() 
+      }
+      ```  
+      
+  * Companion Object Class
+    - 클래스 내부에 단일 오브젝트를 만들어준다.
+    
+      ```kotlin
+      val obj = object{
+       var data = 10
+       fun some() {
+        println("data : $data")
+       }
+      }
+      fun main() {
+           obj.data = 20 //오류
+           obj.some() //오류
+      }
+      ``` 
