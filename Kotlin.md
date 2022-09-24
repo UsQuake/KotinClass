@@ -320,7 +320,9 @@
       ```
       
   * Data Class
+  
     - equals()비교시 객체의 참조 그 자체(주소값)이 아니라 데이터를 비교한다!
+    
       ```kotlin
       data class DataClass(val name: String, val email: String, val age: Int)
       class NonDataClass(val name: String, val email: String, val age: Int)
@@ -334,8 +336,10 @@
            assert(data1.equals(data2))
       }
       ```
+      
   * 컴파일러 자동 생성 멤버 함수
-    - equals() : 일반적인 클래스는 오브젝트간의 참조(주소값)을 비교한다. Data클래스는 객체의 lateinit 변수를 제외하고 내부 변수들의 내용을 비교한다
+  
+    - equals() : 객체id를 비교한다. (Data클래스는 객체의 lateinit 변수를 제외하고 내부 변수들의 내용을 비교한다)
     
       ```kotlin
       data class DataClass(val name: String, val email: String, val age: Int) {
@@ -350,21 +354,19 @@
            assert(obj1.equals(obj2))
       }
       ```
-    - toString() : 즉시 초기화된 내부 데이터 객체를 String으로 포매팅한다(lateinit 변수는 비교하지 않는다)!
+    - toString() : 객체id를 String으로 포매팅한다. (Data클래스는 객체의 lateinit 변수를 제외하고 내부 변수들의 내용을 포매팅한다)
       
       ```kotlin
       data class DataClass(val name: String, val email: String, val age: Int)
       class NonDataClass(val name: String, val email: String, val age: Int)
       fun main() {
-           val obj1 = NonDataClass("kkang", "a@a.com", 10)
-           val obj2 = NonDataClass("kkang", "a@a.com", 10)
-           assert(!obj1.equals(obj2))
-           
-           val data1 = DataClass("kkang", "a@a.com", 10)
-           val data2 = DataClass("kkang", "a@a.com", 10)
-           assert(data1.equals(data2))
+           val obj = NonDataClass("kkang", "a@a.com", 10)
+           val data = DataClass("kkang", "a@a.com", 10)
+           println("non data class toString : ${obj.toString()}")
+           println("data class toString : ${data.toString()}")
       }
       ```
+      
   * Object Class
     - 임시 클래스로 전역으로 사용 가능한 단일 오브젝트를 만들어준다.
     
